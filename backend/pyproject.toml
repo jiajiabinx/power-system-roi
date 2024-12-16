@@ -1,0 +1,26 @@
+[tool.poetry]
+name = "power-system-roi-backend"
+version = "0.1.0"
+description = "Backend for Power System ROI Calculator"
+authors = ["Your Name <your.email@example.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+fastapi = "^0.109.0"
+uvicorn = "^0.27.0"
+pydantic = "^2.5.3"
+geopandas = "^1.0.1"
+shapely = "^2.0.6"
+pgeocode = "^0.5.0"
+scipy = "^1.14.1"
+numpy-financial = "^1.0.0"
+yfinance = "^0.2.50"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.4.4"
+black = "^23.12.1"
+flake8 = "^7.0.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api" 

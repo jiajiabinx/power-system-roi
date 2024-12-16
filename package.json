@@ -1,0 +1,14 @@
+{
+  "name": "power-system-roi",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start-frontend": "cd frontend && npm start",
+    "start-backend": "cd backend && poetry run uvicorn app.main:app --reload --port 8000",
+    "dev": "concurrently \"npm run start-frontend\" \"npm run start-backend\"",
+    "install-backend": "cd backend && poetry install"
+  },
+  "devDependencies": {
+    "concurrently": "^8.0.1"
+  }
+}
