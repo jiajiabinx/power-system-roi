@@ -14,46 +14,50 @@ A web application for calculating ROI on smart grid projects with real-time mark
 ### Backend Setup
 
 1. Navigate to the backend directory:
+```
 bash
 cd backend
-
+```
 2. Create a virtual environment (optional but recommended):
-
+```
 bash
 python -m venv .venv
 source .venv/bin/activate # On Windows use: .venv\Scripts\activate
-
+```
 3. Install required Python packages:
-
+```
 bash
 poetry install
-
+```
 ### Frontend Setup
 
 1. Navigate to the frontend directory:
-
+```
 bash
 cd frontend
-
+```
 2. Install Node dependencies:
-
+```
 bash
 npm install
-
+```
 ## Running the Application
 
 ### Start the Backend Server
 
 1. From the backend directory:
-uvicorn app.main:app --reload
+```
+    bash
+    uvicorn app.main:app --reload
+```
 
 ### Start the Frontend Development Server
 
 1. From the frontend directory:
-
+```
 bash
 npm dev run
-
+```
 The frontend will start at `http://localhost:3000`
 
 ## Usage
