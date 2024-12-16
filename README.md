@@ -1,70 +1,95 @@
-# Getting Started with Create React App
+# Smart Grid ROI Calculator
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A web application for calculating ROI on smart grid projects with real-time market data integration.
 
-## Available Scripts
+## Prerequisites
 
-In the project directory, you can run:
+- Python 3.10+
+- Node.js 14+
+- poetry (Python package manager)
+- npm (Node package manager)
 
-### `npm start`
+## Installation
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Backend Setup
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+1. Navigate to the backend directory:
+bash
+cd backend
 
-### `npm test`
+2. Create a virtual environment (optional but recommended):
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+bash
+python -m venv .venv
+source .venv/bin/activate # On Windows use: .venv\Scripts\activate
 
-### `npm run build`
+3. Install required Python packages:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+bash
+poetry install
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Frontend Setup
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. Navigate to the frontend directory:
 
-### `npm run eject`
+bash
+cd frontend
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+2. Install Node dependencies:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+bash
+npm install
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Running the Application
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Start the Backend Server
 
-## Learn More
+1. From the backend directory:
+uvicorn app.main:app --reload
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Start the Frontend Development Server
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. From the frontend directory:
 
-### Code Splitting
+bash
+npm dev run
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+The frontend will start at `http://localhost:3000`
 
-### Analyzing the Bundle Size
+## Usage
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+1. Open your browser and navigate to `http://localhost:3000`
+2. Fill in the project details:
+   - Company Name
+   - Site Zip Code
+   - Credit Rating
+   - Total Project Cost
+   - Payback Period
+3. Click "Get Credit Assumptions" to fetch LTV ratio and interest rate
+4. Click "Calculate ROI" to see the results
 
-### Making a Progressive Web App
+## API Endpoints
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- `GET /api/credit-assumptions`: Get LTV ratio and interest rate based on credit rating
+- `POST /api/calculate-roi`: Calculate project ROI metrics
+- `GET /api/leads`: Get all saved project calculations
 
-### Advanced Configuration
+## Technologies Used
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- Frontend:
+  - React.js
+  - JavaScript
+  - CSS
 
-### Deployment
+- Backend:
+  - FastAPI
+  - Python
+  - SQLite
+  - numpy-financial
+  - yfinance
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Notes
 
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- The application uses real-time treasury rates for calculations
+- All financial calculations include market-based assumptions
+- Results include IRR, NPV, and other key financial metrics
